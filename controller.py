@@ -28,7 +28,26 @@ def duplicat_row(id):
     data_crud.insert_row(new_conn,new_data)
     db.close_connection(new_conn)
 
+# обновление записи
 def update_row(data):
     new_conn = db.create_connection()
     data_crud.update_row(new_conn,data)
     db.close_connection(new_conn)
+
+# добавление записи
+def insert_row(data):
+    new_conn = db.create_connection()
+    data_crud.insert_row(new_conn, data)
+    db.close_connection(new_conn)
+
+# удаление записи
+def delete_row(id):
+    new_conn = db.create_connection()
+    data_crud.delete_row(new_conn, id)
+    db.close_connection(new_conn) 
+
+# удаление всех записей
+def delete_all():
+    new_conn = db.create_connection()
+    data_crud.clear_all(new_conn)
+    db.close_connection(new_conn) 
