@@ -5,31 +5,17 @@ import controller
 
 
 
-def open(dataset):
+def open():
     window = Tk()
     window.title("Мой телефонный справочник")
     window.geometry('800x400')
     window.rowconfigure(index=0, weight=1)
     window.columnconfigure(index=0, weight=1)
 
-    show_table(dataset)
+    update()
 
 
-# графические элементы для работы с записями справочника
-    btn1 = ttk.Button(window, text ="Изменить выделенную запись",width=70, command=update_window)
-    btn1.grid(column=0, row=2,sticky=E)
-    btn2 = ttk.Button(window, text ="Дублировать выделенную запись",width=70, command=duplicate)
-    btn2.grid(column=0, row=3,sticky=E)
-    btn3 = ttk.Button(window, text ="Удалить выделенную запись",width=70, command=update)
-    btn3.grid(column=0, row=4,sticky=E)
-    btn4 = ttk.Button(window, text ="Обновить отображаемые записи",width=70, command=update)
-    btn4.grid(column=0, row=5,sticky=E)
-    btn5 = ttk.Button(window, text ="Удалить все записи",width=70, command=update)
-    btn5.grid(column=0, row=6,sticky=E)
-    btn6 = ttk.Button(window, text ="Добавить новую запись",width=70, command=update)
-    btn6.grid(column=0, row=7,sticky=E)
-
-# графические элементы для поиска записей в справочнике по фрагменту строки
+# графические элементы для поиска записей в справочнике по фрагменту строки (с учетом регистра)
     lbl_find = Label(window, text="Поиск записей по полю: ")
     lbl_find.grid(column=0, row=1,sticky=E)
     hdrs = ["Фамилия","Имя","Телефон"]
@@ -43,26 +29,42 @@ def open(dataset):
     btn_find = ttk.Button(window, text ="Найти",width=10, command=find)
     btn_find.grid(column=3, row=1)
 
+# графические элементы для работы с записями справочника
+    btn1 = ttk.Button(window, text ="Изменить выделенную запись",width=70, command=update_window)
+    btn1.grid(column=0, row=2,sticky=E)
+    btn2 = ttk.Button(window, text ="Дублировать выделенную запись",width=70, command=duplicate)
+    btn2.grid(column=0, row=3,sticky=E)
+    btn3 = ttk.Button(window, text ="Удалить выделенную запись",width=70, command=delete_row)
+    btn3.grid(column=0, row=4,sticky=E)
+    btn4 = ttk.Button(window, text ="Обновить отображаемые записи",width=70, command=update)
+    btn4.grid(column=0, row=5,sticky=E)
+    btn5 = ttk.Button(window, text ="Удалить все записи",width=70, command=delete_all)
+    btn5.grid(column=0, row=6,sticky=E)
+    btn6 = ttk.Button(window, text ="Добавить новую запись",width=70, command=insert_window)
+    btn6.grid(column=0, row=7,sticky=E)
+    btn7 = ttk.Button(window, text ="Выгрузка в файл",width=70, command=export_data)
+    btn7.grid(column=0, row=8,sticky=E)
+    btn8 = ttk.Button(window, text ="Загрузка из файла",width=70, command=import_data)
+    btn8.grid(column=0, row=9,sticky=E)
+
 # графические элементы для выгрузки справочника в файл заданного формата
-    lbl_exp = Label(window, text="Выбрать формат для выгрузки файла в текущий каталог: ")
-    lbl_exp.grid(column=0, row=8, sticky=E)
-    formats = ["csv","xml","json"]
-    formats_var = StringVar(value=formats[0])
-    combo2 = ttk.Combobox(textvariable=formats_var, values=formats, state="readonly")
-    combo2.grid(column=1,row=8)
-    selection_format = combo2.get()
-    btn_exp = ttk.Button(window, text ="Выгрузить",width=10, command=update)
-    btn_exp.grid(column=2, row=8)
+    # lbl_exp = Label(window, text="Выбрать формат для выгрузки файла в текущий каталог: ")
+    # lbl_exp.grid(column=0, row=8, sticky=E)
+    # formats = ["csv","xml","json"]
+    # formats_var = StringVar(value=formats[0])
+    # combo2 = ttk.Combobox(textvariable=formats_var, values=formats, state="readonly")
+    # combo2.grid(column=1,row=8)
+    # selection_format = combo2.get()
+    # btn_exp = ttk.Button(window, text ="Выгрузить",width=10, command=update)
+    # btn_exp.grid(column=2, row=8)
 
 # графические элементы для загрузки в справояник из файла
-    lbl_imp = Label(window, text="Укажите путь и файл для загрузки данных в справочник: ")
-    lbl_imp.grid(column=0, row=9, sticky=E)
-    entry_imp = ttk.Entry()
-    entry_imp.grid(column=1,row=9)
-    btn_exp = ttk.Button(window, text ="Загрузить",width=10, command=update)
-    btn_exp.grid(column=2, row=9)
-
-
+    # lbl_imp = Label(window, text="Укажите путь и файл для загрузки данных в справочник: ")
+    # lbl_imp.grid(column=0, row=9, sticky=E)
+    # entry_imp = ttk.Entry()
+    # entry_imp.grid(column=1,row=9)
+    # btn_exp = ttk.Button(window, text ="Загрузить",width=10, command=update)
+    # btn_exp.grid(column=2, row=9)
 
     window.mainloop()
 
@@ -103,8 +105,6 @@ def update():
 def find():
     selection_param = combo1.get()
     selection_text = entry.get()
-    print(selection_param)
-    print(selection_text)
     if selection_text:
         match selection_param:
             case "Фамилия":
@@ -127,7 +127,6 @@ def item_selected(event):
     if item:
         datalist = item["values"]
         id = datalist[0]
-        # print(id)
 
 # дублирование записи
 def duplicate():
@@ -138,9 +137,24 @@ def duplicate():
 # окно изменения записи    
 def update_window():
     if tree.selection():
+        title = "Изменить"
+        data = datalist
+        update = True
+        window_constructor(title, data, update)
+
+# окно добавления новой записи  
+def insert_window():
+    title = "Добавить"
+    data = [0,"","","",""]
+    update = False
+    window_constructor(title, data, update)
+
+
+# конструктор окна работы с записью
+def window_constructor(title, data, update):
         global u_window
-        u_window = Tk()
-        u_window.title("Изменить")
+        u_window = Toplevel()
+        u_window.title(title)
         u_window.geometry("250x200")
 
         global entry_surname
@@ -152,36 +166,66 @@ def update_window():
         lbl_surname.grid(column=0, row=0,sticky=E)
         entry_surname = Entry(u_window)
         entry_surname.grid(column=1,row=0)
-        entry_surname.insert(0,datalist[1])
+        entry_surname.insert(0,data[1])
 
         lbl_name = Label(u_window, text="Имя *: ")
         lbl_name.grid(column=0, row=1,sticky=E)
         entry_name = Entry(u_window)
         entry_name.grid(column=1,row=1)
-        entry_name.insert(0,datalist[2])
+        entry_name.insert(0,data[2])
 
         lbl_phone = Label(u_window, text="Телефон *: ")
         lbl_phone.grid(column=0, row=2,sticky=E)
         entry_phone = Entry(u_window)
         entry_phone.grid(column=1,row=2)
-        entry_phone.insert(0,datalist[3])
+        entry_phone.insert(0,data[3])
 
         lbl_description = Label(u_window, text="Описание: ")
         lbl_description.grid(column=0, row=3,sticky=E)
         entry_description = Entry(u_window)
         entry_description.grid(column=1,row=3)
-        entry_description.insert(0,datalist[4])
+        entry_description.insert(0,data[4])
 
-        accept = Button(u_window, text ="Сохранить",width=10, command=save)
+        if update:
+            accept = Button(u_window, text ="Сохранить",width=10, command=save)
+        else:
+            accept = Button(u_window, text ="Добавить",width=10, command=insert)
         accept.grid(column=1, row=4)
+        u_window.grab_set()
 
-# сохранение изменений  
+# кнопка сохранение изменений  
 def save():
-    if entry_surname == 0 or entry_name == 0 or entry_phone == 0:
+    if entry_surname.get() == "" or entry_name.get() == "" or entry_phone.get() == "":
         showerror("Error", message= "Не заполнено обязательное поле!")
     else:
         str_data = (entry_surname.get(),entry_name.get(),entry_phone.get(),entry_description.get(),id)
         controller.update_row(str_data)
         update()
+        u_window.grab_release()
         u_window.destroy()
-        
+
+# кнопка добавление записи
+def insert():
+    if entry_surname.get() == "" or entry_name.get() == "" or entry_phone.get() == "":
+        showerror("Error", message= "Не заполнено обязательное поле!")
+    else:
+        str_data = (entry_surname.get(),entry_name.get(),entry_phone.get(),entry_description.get())
+        controller.insert_row(str_data)
+        update()
+        u_window.grab_release()
+        u_window.destroy()  
+
+def delete_row():
+    if tree.selection():
+        controller.delete_row(id)
+        update()
+
+def delete_all():
+    controller.delete_all()
+    update()
+
+def export_data():
+    update()
+
+def import_data():
+    update()
