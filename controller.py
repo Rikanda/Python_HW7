@@ -1,5 +1,6 @@
 import data_crud
 import db
+import xml_generator
 
 def open_db():
     db.create_my_phonebook()
@@ -51,3 +52,9 @@ def delete_all():
     new_conn = db.create_connection()
     data_crud.clear_all(new_conn)
     db.close_connection(new_conn) 
+
+def export_data(type_file):
+    dataset = all_rows()
+    match type_file:
+        case "xml":
+            xml_generator.create(dataset)

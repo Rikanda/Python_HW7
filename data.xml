@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phonebook>
+    <record id = 2>
+        <surname>Печкин</surname>
+        <name>Игорь</name>
+        <phone>909-11-11</phone>
+        <description>изменено</description>
+    </record>
+    <record id = 4>
+        <surname>Николаева</surname>
+        <name>Светлана</name>
+        <phone>123-34-234</phone>
+        <description></description>
+    </record>
+    <record id = 5>
+        <surname>Сергеенко</surname>
+        <name>Елизавета</name>
+        <phone>666-66-777</phone>
+        <description>звони</description>
+    </record>
+    <record id = 6>
+        <surname>Егорова</surname>
+        <name>Анна</name>
+        <phone>666-966-666</phone>
+        <description>звони</description>
+    </record>
+    <record id = 7>
+        <surname>Книгина</surname>
+        <name>Анна</name>
+        <phone>666-66-777</phone>
+        <description>может завтра</description>
+    </record>
+    <record id = 8>
+        <surname>Семенова</surname>
+        <name>Елена</name>
+        <phone>234-44-113</phone>
+        <description></description>
+    </record>
+    <record id = 9>
+        <surname>Печкин</surname>
+        <name>Игорь</name>
+        <phone>909-11-11</phone>
+        <description>изменено</description>
+    </record>
+    <record id = 10>
+        <surname>Печкин</surname>
+        <name>Игорь</name>
+        <phone>909-11-11</phone>
+        <description>изменено</description>
+    </record>
+    <record id = 11>
+        <surname>Печкин</surname>
+        <name>Игорь</name>
+        <phone>909-11-11</phone>
+        <description>изменено</description>
+    </record>
+    <record id = 12>
+        <surname>Печкин</surname>
+        <name>Игорь</name>
+        <phone>909-11-11</phone>
+        <description>изменено</description>
+    </record>
+    <record id = 13>
+        <surname>Сергеенко</surname>
+        <name>Анна</name>
+        <phone>666-66-666</phone>
+        <description>звони</description>
+    </record>
+    <record id = 15>
+        <surname>Сергеенко</surname>
+        <name>Анна</name>
+        <phone>666-66-666</phone>
+        <description>звони</description>
+    </record>
+    <record id = 17>
+        <surname>Печкин</surname>
+        <name>Игорь</name>
+        <phone>909-11-11</phone>
+        <description>изменено</description>
+    </record>
+    <record id = 18>
+        <surname>Свечкин</surname>
+        <name>Илья</name>
+        <phone>911</phone>
+        <description>служба спасения</description>
+    </record>
+    <record id = 20>
+        <surname>некто</surname>
+        <name></name>
+        <phone></phone>
+        <description></description>
+    </record>
+    <record id = 21>
+        <surname>да</surname>
+        <name>нет</name>
+        <phone>может быть</phone>
+        <description>еще кто-нибудь</description>
+    </record>
+</phonebook>

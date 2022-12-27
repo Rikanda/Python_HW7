@@ -48,15 +48,7 @@ def open():
     btn8.grid(column=0, row=9,sticky=E)
 
 # графические элементы для выгрузки справочника в файл заданного формата
-    # lbl_exp = Label(window, text="Выбрать формат для выгрузки файла в текущий каталог: ")
-    # lbl_exp.grid(column=0, row=8, sticky=E)
-    # formats = ["csv","xml","json"]
-    # formats_var = StringVar(value=formats[0])
-    # combo2 = ttk.Combobox(textvariable=formats_var, values=formats, state="readonly")
-    # combo2.grid(column=1,row=8)
-    # selection_format = combo2.get()
-    # btn_exp = ttk.Button(window, text ="Выгрузить",width=10, command=update)
-    # btn_exp.grid(column=2, row=8)
+
 
 # графические элементы для загрузки в справояник из файла
     # lbl_imp = Label(window, text="Укажите путь и файл для загрузки данных в справочник: ")
@@ -225,7 +217,37 @@ def delete_all():
     update()
 
 def export_data():
-    update()
+    export = True
+    title = "Выгрузка"
+    dialog_constructor(title,export)
+
 
 def import_data():
+    export = False
+    title = "Загрузка"
+    dialog_constructor(title,export)
+
+def dialog_constructor(title, export):
+    global d_window
+    d_window = Toplevel()
+    d_window.title(title)
+    d_window.geometry("350x100")
+
+    lbl_exp = Label(d_window, text="Выбрать формат файла: ")
+    lbl_exp.grid(column=0, row=0, sticky=E)
+    formats = ["csv","xml","json"]
+    formats_var = StringVar(value=formats[0])
+    global combo2
+    combo2 = ttk.Combobox(d_window, textvariable=formats_var, values=formats, state="readonly")
+    combo2.grid(column=1,row=0)
+    btn_exp = Button(d_window, text ="Выполнить",width=10, command=exporting)
+    btn_exp.grid(column=0, row=1)
     update()
+
+def exporting():
+    type_file = combo2.get()
+    controller.export_data(type_file)
+    showinfo("Info", message="Данные выгружены в файл data.{}".format(type_file))
+    d_window.grab_release()
+    d_window.destroy()
+
