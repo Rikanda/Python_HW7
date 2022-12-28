@@ -76,11 +76,30 @@ def import_xml(f_path):
         if not datalist:
             message = "No data"
         else:
-            message = "In progress"
-            import_data(datalist)
+            try:
+                import_data(datalist)
+                message = "Success"
+            except Exception as e:
+                message = "Error insert to DB"
     else:
         message = "Bad structure"
     return message
+
+def import_csv(f_path):
+    datalist = csv_import.parseCSV(f_path)
+    if not datalist:
+        message = "No data"
+    elif datalist[0]== 'Bad structure':
+        message = datalist[0]
+    else:
+        try:
+            import_data(datalist)
+            message = "Success"
+        except Exception as e:
+            message = "Error insert to DB"
+    return message
+
+        
 
 # запись в БД набора строк из массива
 def import_data(datalist:list):

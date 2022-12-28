@@ -268,10 +268,17 @@ def importing():
                 finish_import()
             case ".xml":
                 m = controller.import_xml(f_path)
-                showinfo("Info", message=m)
+                if m == "Success":
+                    showinfo("Info", message=m)
+                else:
+                    showerror("Error", message=m)
                 finish_import()
             case ".csv":
-                print('csv')
+                m = controller.import_csv(f_path)
+                if m == "Success":
+                    showinfo("Info", message=m)
+                else:
+                    showerror("Error", message=m)
                 finish_import()
             case _:
                 showerror("Error", message= "Не подходящий формат файла!")
