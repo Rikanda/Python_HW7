@@ -1,6 +1,8 @@
 import data_crud
 import db
 import xml_generator
+import csv_generator
+import json_generator
 
 def open_db():
     db.create_my_phonebook()
@@ -53,8 +55,16 @@ def delete_all():
     data_crud.clear_all(new_conn)
     db.close_connection(new_conn) 
 
+# выгрузка в xml, csv
 def export_data(type_file):
     dataset = all_rows()
     match type_file:
         case "xml":
             xml_generator.create(dataset)
+        case "csv":
+            csv_generator.create(dataset)
+        case "json":
+            json_generator.create(dataset)
+
+
+

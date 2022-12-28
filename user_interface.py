@@ -72,7 +72,7 @@ def show_table(dataset):
     tree.heading("phone", text = "Телефон", anchor=W)
     tree.heading("description", text = "Описание", anchor=W)
 
-    tree.column("#1", stretch=NO, width=70)
+    tree.column("#1", stretch=NO, width=0)
     tree.column("#2", stretch=NO, width=100)
     tree.column("#3", stretch=NO, width=100)
     tree.column("#4", stretch=NO, width=100)
@@ -207,39 +207,43 @@ def insert():
         u_window.grab_release()
         u_window.destroy()  
 
+# удаление записи
 def delete_row():
     if tree.selection():
         controller.delete_row(id)
         update()
 
+# удаление всех записей
 def delete_all():
     controller.delete_all()
     update()
 
+# выгрузка в файл
 def export_data():
     export = True
     title = "Выгрузка"
     dialog_constructor(title,export)
 
-
+# загрузка из файла
 def import_data():
     export = False
     title = "Загрузка"
     dialog_constructor(title,export)
 
+# конструктор окна диалога выгрузки-загрузки
 def dialog_constructor(title, export):
     global d_window
-    d_window = Toplevel()
+    d_window = Tk()
     d_window.title(title)
     d_window.geometry("350x100")
 
     lbl_exp = Label(d_window, text="Выбрать формат файла: ")
     lbl_exp.grid(column=0, row=0, sticky=E)
     formats = ["csv","xml","json"]
-    formats_var = StringVar(value=formats[0])
     global combo2
-    combo2 = ttk.Combobox(d_window, textvariable=formats_var, values=formats, state="readonly")
+    combo2 = ttk.Combobox(d_window, values=formats, state="readonly")
     combo2.grid(column=1,row=0)
+    combo2.current(0)
     btn_exp = Button(d_window, text ="Выполнить",width=10, command=exporting)
     btn_exp.grid(column=0, row=1)
     update()

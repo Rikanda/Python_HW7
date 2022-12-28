@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phonebook>
-    <record id = 2>
+    <record>
         <surname>Печкин</surname>
         <name>Игорь</name>
         <phone>909-11-11</phone>
         <description>изменено</description>
     </record>
-    <record id = 4>
+    <record>
         <surname>Николаева</surname>
         <name>Светлана</name>
         <phone>123-34-234</phone>
         <description></description>
     </record>
-    <record id = 5>
+    <record>
         <surname>Сергеенко</surname>
         <name>Елизавета</name>
         <phone>666-66-777</phone>
         <description>звони</description>
     </record>
-    <record id = 6>
+    <record>
         <surname>Егорова</surname>
         <name>Анна</name>
         <phone>666-966-666</phone>
         <description>звони</description>
     </record>
-    <record id = 7>
+    <record>
         <surname>Книгина</surname>
         <name>Анна</name>
         <phone>666-66-777</phone>
-        <description>может завтра</description>
+        <description>не может</description>
     </record>
-    <record id = 8>
+    <record>
         <surname>Семенова</surname>
         <name>Елена</name>
         <phone>234-44-113</phone>
         <description></description>
     </record>
-    <record id = 9>
+    <record>
         <surname>Печкин</surname>
         <name>Игорь</name>
         <phone>909-11-11</phone>
         <description>изменено</description>
     </record>
-    <record id = 10>
+    <record>
         <surname>Печкин</surname>
         <name>Игорь</name>
         <phone>909-11-11</phone>
         <description>изменено</description>
     </record>
-    <record id = 11>
+    <record>
         <surname>Печкин</surname>
         <name>Игорь</name>
         <phone>909-11-11</phone>
         <description>изменено</description>
     </record>
-    <record id = 12>
+    <record>
         <surname>Печкин</surname>
         <name>Игорь</name>
         <phone>909-11-11</phone>
         <description>изменено</description>
     </record>
-    <record id = 13>
+    <record>
         <surname>Сергеенко</surname>
         <name>Анна</name>
         <phone>666-66-666</phone>
         <description>звони</description>
     </record>
-    <record id = 15>
+    <record>
         <surname>Сергеенко</surname>
         <name>Анна</name>
         <phone>666-66-666</phone>
         <description>звони</description>
     </record>
-    <record id = 17>
+    <record>
         <surname>Печкин</surname>
         <name>Игорь</name>
         <phone>909-11-11</phone>
         <description>изменено</description>
     </record>
-    <record id = 18>
+    <record>
         <surname>Свечкин</surname>
         <name>Илья</name>
         <phone>911</phone>
         <description>служба спасения</description>
     </record>
-    <record id = 20>
-        <surname>некто</surname>
-        <name></name>
-        <phone></phone>
-        <description></description>
+    <record>
+        <surname>да</surname>
+        <name>нет</name>
+        <phone>может быть</phone>
+        <description>еще кто-нибудь</description>
     </record>
-    <record id = 21>
+    <record>
         <surname>да</surname>
         <name>нет</name>
         <phone>может быть</phone>
