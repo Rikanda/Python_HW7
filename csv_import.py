@@ -1,5 +1,6 @@
 import csv
 
+# преобразование в список кортежей для загрузки в БД и одновременно проверка структуры
 def parseCSV(csv_file):
     data_list=[]
     with open(csv_file,'r', encoding="utf-8") as csvfile:

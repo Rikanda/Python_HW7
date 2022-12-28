@@ -251,6 +251,7 @@ def dialog_constructor(title, export):
     
     d_window.grab_set()
 
+# обработка выгрузки файла
 def exporting():
     type_file = combo2.get()
     controller.export_data(type_file)
@@ -258,13 +259,18 @@ def exporting():
     d_window.grab_release()
     d_window.destroy()
 
+# обработка загрузки файла
 def importing():
     if entry_path.get():
         f_path = entry_path.get()
         f_type = f_path[-4::]
         match f_type:
             case "json":
-                print('json')
+                m = controller.import_json(f_path)
+                if m == "Success":
+                    showinfo("Info", message=m)
+                else:
+                    showerror("Error", message=m)
                 finish_import()
             case ".xml":
                 m = controller.import_xml(f_path)
@@ -295,7 +301,6 @@ def path_file():
 
 # успешный финал импорта
 def finish_import():
-    # showinfo("Info", message="Данные загружены")
     d_window.grab_release()
     d_window.destroy()
     update()

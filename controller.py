@@ -85,6 +85,7 @@ def import_xml(f_path):
         message = "Bad structure"
     return message
 
+# импорт csv
 def import_csv(f_path):
     datalist = csv_import.parseCSV(f_path)
     if not datalist:
@@ -99,7 +100,21 @@ def import_csv(f_path):
             message = "Error insert to DB"
     return message
 
-        
+# импорт json
+def import_json(f_path):
+    if json_import.parseJS(f_path):
+        datalist = json_import.importJS(f_path)
+        if not datalist:
+            message = "No data"
+        else:
+            try:
+                import_data(datalist)
+                message = "Success"
+            except Exception as e:
+                message = "Error insert to DB"
+    else:
+        message = "Bad structure"
+    return message
 
 # запись в БД набора строк из массива
 def import_data(datalist:list):
