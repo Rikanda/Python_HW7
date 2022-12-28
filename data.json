@@ -27,8 +27,8 @@
    {
        "surname": "Книгина",
        "name": "Анна",
-       "phone": "666-66-777",
-       "description": "не может"
+       "phone": "566-66-777",
+       "description": "может"
    },
    {
        "surname": "Семенова",
@@ -55,16 +55,10 @@
        "description": "изменено"
    },
    {
-       "surname": "Печкин",
-       "name": "Игорь",
-       "phone": "909-11-11",
-       "description": "изменено"
-   },
-   {
        "surname": "Сергеенко",
-       "name": "Анна",
-       "phone": "666-66-666",
-       "description": "звони"
+       "name": "Алина",
+       "phone": "222-66-666",
+       "description": "замена"
    },
    {
        "surname": "Сергеенко",
@@ -95,6 +89,18 @@
        "name": "нет",
        "phone": "может быть",
        "description": "еще кто-нибудь"
+   },
+   {
+       "surname": "Книгина",
+       "name": "Анна",
+       "phone": "566-66-777",
+       "description": "может"
+   },
+   {
+       "surname": "Сидоров",
+       "name": "Никифор",
+       "phone": "101",
+       "description": "полкан"
    }
     ]
 }

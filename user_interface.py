@@ -3,6 +3,9 @@ from tkinter import ttk
 from tkinter.messagebox import showerror, showinfo, showwarning
 from tkinter import filedialog
 import controller
+import logging
+
+module_logger = logging.getLogger("phonebookApp.ui")
 
 
 
@@ -82,6 +85,8 @@ def show_table(dataset):
 def update():
     data = controller.all_rows()
     show_table(data)
+    logger = logging.getLogger("phonebookApp.ui.update")
+    logger.info("refresh")
 
 
 # поиск записей по условию
@@ -97,8 +102,11 @@ def find():
             case "Телефон":
                 p = "phone"
         if p:
+            logger = logging.getLogger("phonebookApp.ui.find")
+            logger.info("find \"{}\" in {}".format(selection_text,p))
             data = controller.find_rows(p,selection_text)
             show_table(data)
+
 
 
 # получение идентификатора выделенной записи
@@ -115,6 +123,8 @@ def item_selected(event):
 def duplicate():
     if tree.selection():
         controller.duplicat_row(id)
+        logger = logging.getLogger("phonebookApp.ui.duplicate")
+        logger.info("duplicate record id = {}".format(id))
         update()
 
 # окно изменения записи    
@@ -123,6 +133,8 @@ def update_window():
         title = "Изменить"
         data = datalist
         update = True
+        logger = logging.getLogger("phonebookApp.ui.change")
+        logger.info("change record data {}".format(data))
         window_constructor(title, data, update)
 
 # окно добавления новой записи  
@@ -182,6 +194,8 @@ def save():
         showerror("Error", message= "Не заполнено обязательное поле!")
     else:
         str_data = (entry_surname.get(),entry_name.get(),entry_phone.get(),entry_description.get(),id)
+        logger = logging.getLogger("phonebookApp.ui.change")
+        logger.info("new record data {}".format(str_data))
         controller.update_row(str_data)
         update()
         u_window.grab_release()
@@ -193,6 +207,8 @@ def insert():
         showerror("Error", message= "Не заполнено обязательное поле!")
     else:
         str_data = (entry_surname.get(),entry_name.get(),entry_phone.get(),entry_description.get())
+        logger = logging.getLogger("phonebookApp.ui.insert")
+        logger.info("insert record data {}".format(str_data))
         controller.insert_row(str_data)
         update()
         u_window.grab_release()
@@ -201,11 +217,15 @@ def insert():
 # удаление записи
 def delete_row():
     if tree.selection():
+        logger = logging.getLogger("phonebookApp.ui.delete")
+        logger.info("delete record id = {}".format(id))
         controller.delete_row(id)
         update()
 
 # удаление всех записей
 def delete_all():
+    logger = logging.getLogger("phonebookApp.ui.delete")
+    logger.info("delete all records")
     controller.delete_all()
     update()
 
@@ -256,6 +276,8 @@ def exporting():
     type_file = combo2.get()
     controller.export_data(type_file)
     showinfo("Info", message="Данные выгружены в файл data.{}".format(type_file))
+    logger = logging.getLogger("phonebookApp.ui.export")
+    logger.info("Export data to the file data.{}".format(type_file))
     d_window.grab_release()
     d_window.destroy()
 
@@ -264,30 +286,38 @@ def importing():
     if entry_path.get():
         f_path = entry_path.get()
         f_type = f_path[-4::]
+        logger = logging.getLogger("phonebookApp.ui.import")
         match f_type:
             case "json":
                 m = controller.import_json(f_path)
                 if m == "Success":
                     showinfo("Info", message=m)
+                    logger.info("Success import from file {}".format(f_path))
                 else:
                     showerror("Error", message=m)
+                    logger.error("Error import from file {} with message {}".format(f_path,m))
                 finish_import()
             case ".xml":
                 m = controller.import_xml(f_path)
                 if m == "Success":
                     showinfo("Info", message=m)
+                    logger.info("Success import from file {}".format(f_path))
                 else:
                     showerror("Error", message=m)
+                    logger.error("Error import from file {} with message {}".format(f_path,m))
                 finish_import()
             case ".csv":
                 m = controller.import_csv(f_path)
                 if m == "Success":
                     showinfo("Info", message=m)
+                    logger.info("Success import from file {}".format(f_path))
                 else:
                     showerror("Error", message=m)
+                    logger.error("Error import from file {} with message {}".format(f_path, m))
                 finish_import()
             case _:
                 showerror("Error", message= "Не подходящий формат файла!")
+                logger.error("Error import from file {}: bad format file".format(f_path))
 
     else:
         showerror("Error", message= "Не выбран файл для загрузки!")

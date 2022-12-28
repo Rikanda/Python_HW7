@@ -6,6 +6,9 @@ import json_generator
 import xml_import
 import csv_import
 import json_import
+import logging
+
+module_logger = logging.getLogger("phonebookApp.controller")
 
 def open_db():
     db.create_my_phonebook()
@@ -24,6 +27,8 @@ def find_rows(find_field,find_str):
     find_rows = data_crud.select_param(new_conn,find_field,find_str)
     db.close_connection(new_conn)
     dataset = [d for d in find_rows]
+    logger = logging.getLogger("phonebookApp.controller.find")
+    logger.info("finded {} records".format(len(dataset)))
     return dataset
 
 # дублирование записи
@@ -43,7 +48,9 @@ def update_row(data):
 # добавление записи
 def insert_row(data):
     new_conn = db.create_connection()
-    data_crud.insert_row(new_conn, data)
+    id = data_crud.insert_row(new_conn, data)
+    logger = logging.getLogger("phonebookApp.controller.insert")
+    logger.info("Isert data {} with id = {} ".format(data, id))
     db.close_connection(new_conn)
 
 # удаление записи
@@ -120,6 +127,8 @@ def import_json(f_path):
 def import_data(datalist:list):
     for d in datalist:
         insert_row(d)
+    logger = logging.getLogger("phonebookApp.controller.import")
+    logger.info("Imported {} records".format(len(datalist)))
    
 
 
