@@ -1,0 +1,106 @@
+{
+    "phonebook": [
+   {
+       "surname": "Печкин",
+       "name": "Игорь",
+       "phone": "909-11-11",
+       "description": "изменено"
+   },
+   {
+       "surname": "Николаева",
+       "name": "Светлана",
+       "phone": "123-34-234",
+       "description": ""
+   },
+   {
+       "surname": "Сергеенко",
+       "name": "Елизавета",
+       "phone": "666-66-777",
+       "description": "звони"
+   },
+   {
+       "surname": "Егорова",
+       "name": "Анна",
+       "phone": "666-966-666",
+       "description": "звони"
+   },
+   {
+       "surname": "Книгина",
+       "name": "Анна",
+       "phone": "566-66-777",
+       "description": "может"
+   },
+   {
+       "surname": "Семенова",
+       "name": "Елена",
+       "phone": "234-44-113",
+       "description": ""
+   },
+   {
+       "surname": "Печкин",
+       "name": "Игорь",
+       "phone": "909-11-11",
+       "description": "изменено"
+   },
+   {
+       "surname": "Печкин",
+       "name": "Игорь",
+       "phone": "909-11-11",
+       "description": "изменено"
+   },
+   {
+       "surname": "Печкин",
+       "name": "Игорь",
+       "phone": "909-11-11",
+       "description": "изменено"
+   },
+   {
+       "surname": "Сергеенко",
+       "name": "Алина",
+       "phone": "222-66-666",
+       "description": "замена"
+   },
+   {
+       "surname": "Сергеенко",
+       "name": "Анна",
+       "phone": "666-66-666",
+       "description": "звони"
+   },
+   {
+       "surname": "Печкин",
+       "name": "Игорь",
+       "phone": "909-11-11",
+       "description": "изменено"
+   },
+   {
+       "surname": "Свечкин",
+       "name": "Илья",
+       "phone": "911",
+       "description": "служба спасения"
+   },
+   {
+       "surname": "некто",
+       "name": "",
+       "phone": "",
+       "description": ""
+   },
+   {
+       "surname": "да",
+       "name": "нет",
+       "phone": "может быть",
+       "description": "еще кто-нибудь"
+   },
+   {
+       "surname": "Книгина",
+       "name": "Анна",
+       "phone": "566-66-777",
+       "description": "может"
+   },
+   {
+       "surname": "Сидоров",
+       "name": "Никифор",
+       "phone": "101",
+       "description": "полкан"
+   }
+    ]
+}

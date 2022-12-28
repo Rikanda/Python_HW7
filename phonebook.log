@@ -1,0 +1,41 @@
+2022-12-29 01:23:18,208 - phonebookApp - INFO - Program started
+2022-12-29 01:23:18,359 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:23:35,364 - phonebookApp.ui.find - INFO - find "на" in name
+2022-12-29 01:23:35,367 - phonebookApp.controller.find - INFO - finded 6 records
+2022-12-29 01:23:42,923 - phonebookApp.ui.change - INFO - change record data [11, 'Сергеенко', 'Анна', '666-66-666', 'звони']
+2022-12-29 01:24:08,287 - phonebookApp.ui.change - INFO - new record data ('Сергеенко', 'Алина', '222-66-666', 'замена', 11)
+2022-12-29 01:24:08,300 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:24:17,715 - phonebookApp.ui.duplicate - INFO - duplicate record id = 5
+2022-12-29 01:24:17,719 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:24:23,931 - phonebookApp.ui.delete - INFO - delete record id = 8
+2022-12-29 01:24:23,941 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:24:27,044 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:24:55,718 - phonebookApp.ui.insert - INFO - insert record data ('Сидоров', 'Никифор', '101', 'полкан')
+2022-12-29 01:24:55,731 - phonebookApp.controller.insert - INFO - Isert data ('Сидоров', 'Никифор', '101', 'полкан') with id = 18 
+2022-12-29 01:24:55,736 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:25:14,748 - phonebookApp.ui.export - INFO - Export data to the file data.xml
+2022-12-29 01:25:22,846 - phonebookApp.ui.export - INFO - Export data to the file data.csv
+2022-12-29 01:25:29,465 - phonebookApp.ui.export - INFO - Export data to the file data.json
+2022-12-29 01:25:33,616 - phonebookApp.ui.delete - INFO - delete all records
+2022-12-29 01:25:33,631 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:25:44,151 - phonebookApp.controller.insert - INFO - Isert data ('Печкин', 'Игорь', '909-11-11', 'изменено') with id = 1 
+2022-12-29 01:25:44,156 - phonebookApp.controller.insert - INFO - Isert data ('Николаева', 'Светлана', '123-34-234', '') with id = 2 
+2022-12-29 01:25:44,162 - phonebookApp.controller.insert - INFO - Isert data ('Сергеенко', 'Елизавета', '666-66-777', 'звони') with id = 3 
+2022-12-29 01:25:44,167 - phonebookApp.controller.insert - INFO - Isert data ('Егорова', 'Анна', '666-966-666', 'звони') with id = 4 
+2022-12-29 01:25:44,173 - phonebookApp.controller.insert - INFO - Isert data ('Книгина', 'Анна', '566-66-777', 'может') with id = 5 
+2022-12-29 01:25:44,177 - phonebookApp.controller.insert - INFO - Isert data ('Семенова', 'Елена', '234-44-113', '') with id = 6 
+2022-12-29 01:25:44,181 - phonebookApp.controller.insert - INFO - Isert data ('Печкин', 'Игорь', '909-11-11', 'изменено') with id = 7 
+2022-12-29 01:25:44,186 - phonebookApp.controller.insert - INFO - Isert data ('Печкин', 'Игорь', '909-11-11', 'изменено') with id = 8 
+2022-12-29 01:25:44,191 - phonebookApp.controller.insert - INFO - Isert data ('Печкин', 'Игорь', '909-11-11', 'изменено') with id = 9 
+2022-12-29 01:25:44,195 - phonebookApp.controller.insert - INFO - Isert data ('Сергеенко', 'Алина', '222-66-666', 'замена') with id = 10 
+2022-12-29 01:25:44,199 - phonebookApp.controller.insert - INFO - Isert data ('Сергеенко', 'Анна', '666-66-666', 'звони') with id = 11 
+2022-12-29 01:25:44,203 - phonebookApp.controller.insert - INFO - Isert data ('Печкин', 'Игорь', '909-11-11', 'изменено') with id = 12 
+2022-12-29 01:25:44,207 - phonebookApp.controller.insert - INFO - Isert data ('Свечкин', 'Илья', '911', 'служба спасения') with id = 13 
+2022-12-29 01:25:44,212 - phonebookApp.controller.insert - INFO - Isert data ('некто', '', '', '') with id = 14 
+2022-12-29 01:25:44,216 - phonebookApp.controller.insert - INFO - Isert data ('да', 'нет', 'может быть', 'еще кто-нибудь') with id = 15 
+2022-12-29 01:25:44,220 - phonebookApp.controller.insert - INFO - Isert data ('Книгина', 'Анна', '566-66-777', 'может') with id = 16 
+2022-12-29 01:25:44,225 - phonebookApp.controller.insert - INFO - Isert data ('Сидоров', 'Никифор', '101', 'полкан') with id = 17 
+2022-12-29 01:25:44,225 - phonebookApp.controller.import - INFO - Imported 17 records
+2022-12-29 01:25:46,449 - phonebookApp.ui.import - INFO - Success import from file C:/Learn/python_gb/ph/python_hw7-1/data.xml
+2022-12-29 01:25:46,467 - phonebookApp.ui.update - INFO - refresh
+2022-12-29 01:25:49,803 - phonebookApp - INFO - Program closed
