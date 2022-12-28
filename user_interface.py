@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showerror, showinfo, showwarning
+from tkinter import filedialog
 import controller
 
 
@@ -12,6 +13,7 @@ def open():
     window.rowconfigure(index=0, weight=1)
     window.columnconfigure(index=0, weight=1)
 
+# при открытии всегда обновляем таблицу с записями справочника из БД
     update()
 
 
@@ -46,17 +48,6 @@ def open():
     btn7.grid(column=0, row=8,sticky=E)
     btn8 = ttk.Button(window, text ="Загрузка из файла",width=70, command=import_data)
     btn8.grid(column=0, row=9,sticky=E)
-
-# графические элементы для выгрузки справочника в файл заданного формата
-
-
-# графические элементы для загрузки в справояник из файла
-    # lbl_imp = Label(window, text="Укажите путь и файл для загрузки данных в справочник: ")
-    # lbl_imp.grid(column=0, row=9, sticky=E)
-    # entry_imp = ttk.Entry()
-    # entry_imp.grid(column=1,row=9)
-    # btn_exp = ttk.Button(window, text ="Загрузить",width=10, command=update)
-    # btn_exp.grid(column=2, row=9)
 
     window.mainloop()
 
@@ -233,20 +224,32 @@ def import_data():
 # конструктор окна диалога выгрузки-загрузки
 def dialog_constructor(title, export):
     global d_window
-    d_window = Tk()
+    d_window = Toplevel()
     d_window.title(title)
-    d_window.geometry("350x100")
+    d_window.geometry("600x100")
 
-    lbl_exp = Label(d_window, text="Выбрать формат файла: ")
+    if export:
+        lbl_exp = Label(d_window, text="Выбрать формат файла: ")
+        formats = ["csv","xml","json"]
+        global combo2
+        combo2 = ttk.Combobox(d_window, values=formats, state="readonly")
+        combo2.grid(column=1,row=0)
+        combo2.current(0)
+        btn_exp = Button(d_window, text ="Выполнить",width=20, command=exporting)
+    
+    else:
+        btn_exp = Button(d_window, text ="Выполнить",width=20, command=importing)
+        lbl_exp = Label(d_window, text="Путь к файлу: ")
+        global entry_path
+        entry_path = Entry(d_window, width=70)
+        entry_path.grid(column=1,row=0)
+        open_button = Button(d_window, text ="Выбрать файл",width=20, command=path_file)
+        open_button.grid(column=1,row=1,sticky=W)
+        
     lbl_exp.grid(column=0, row=0, sticky=E)
-    formats = ["csv","xml","json"]
-    global combo2
-    combo2 = ttk.Combobox(d_window, values=formats, state="readonly")
-    combo2.grid(column=1,row=0)
-    combo2.current(0)
-    btn_exp = Button(d_window, text ="Выполнить",width=10, command=exporting)
-    btn_exp.grid(column=0, row=1)
-    update()
+    btn_exp.grid(column=1, row=2, sticky=W)
+    
+    d_window.grab_set()
 
 def exporting():
     type_file = combo2.get()
@@ -255,3 +258,37 @@ def exporting():
     d_window.grab_release()
     d_window.destroy()
 
+def importing():
+    if entry_path.get():
+        f_path = entry_path.get()
+        f_type = f_path[-4::]
+        match f_type:
+            case "json":
+                print('json')
+                finish_import()
+            case ".xml":
+                m = controller.import_xml(f_path)
+                showinfo("Info", message=m)
+                finish_import()
+            case ".csv":
+                print('csv')
+                finish_import()
+            case _:
+                showerror("Error", message= "Не подходящий формат файла!")
+
+    else:
+        showerror("Error", message= "Не выбран файл для загрузки!")
+
+
+# открыть путь к файлу
+def path_file():
+    filepath = filedialog.askopenfilename()
+    if filepath:
+        entry_path.insert(0,str(filepath))
+
+# успешный финал импорта
+def finish_import():
+    # showinfo("Info", message="Данные загружены")
+    d_window.grab_release()
+    d_window.destroy()
+    update()

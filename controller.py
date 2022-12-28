@@ -3,6 +3,9 @@ import db
 import xml_generator
 import csv_generator
 import json_generator
+import xml_import
+import csv_import
+import json_import
 
 def open_db():
     db.create_my_phonebook()
@@ -55,7 +58,7 @@ def delete_all():
     data_crud.clear_all(new_conn)
     db.close_connection(new_conn) 
 
-# выгрузка в xml, csv
+# выгрузка в xml, csv, json
 def export_data(type_file):
     dataset = all_rows()
     match type_file:
@@ -65,6 +68,25 @@ def export_data(type_file):
             csv_generator.create(dataset)
         case "json":
             json_generator.create(dataset)
+
+# импорт xml
+def import_xml(f_path):
+    if xml_import.parseXML(f_path):
+        datalist= xml_import.arrayXML(f_path)
+        if not datalist:
+            message = "No data"
+        else:
+            message = "In progress"
+            import_data(datalist)
+    else:
+        message = "Bad structure"
+    return message
+
+# запись в БД набора строк из массива
+def import_data(datalist:list):
+    for d in datalist:
+        insert_row(d)
+   
 
 
 
